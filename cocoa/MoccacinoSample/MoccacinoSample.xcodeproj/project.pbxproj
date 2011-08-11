@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		435762BB13F4212500A42B26 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435762BA13F4212500A42B26 /* Cocoa.framework */; };
+		435762C513F4212500A42B26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 435762C313F4212500A42B26 /* InfoPlist.strings */; };
+		435762C713F4212500A42B26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 435762C613F4212500A42B26 /* main.m */; };
+		435762CB13F4212500A42B26 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 435762C913F4212500A42B26 /* Credits.rtf */; };
+		435762CE13F4212500A42B26 /* MoccacinoSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 435762CD13F4212500A42B26 /* MoccacinoSampleAppDelegate.m */; };
+		435762D113F4212500A42B26 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 435762CF13F4212500A42B26 /* MainMenu.xib */; };
+		435762DE13F4218B00A42B26 /* MoccacinoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 435762DC13F4218B00A42B26 /* MoccacinoWindowController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		435762B613F4212500A42B26 /* MoccacinoSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoccacinoSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		435762BA13F4212500A42B26 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		435762BD13F4212500A42B26 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		435762BE13F4212500A42B26 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		435762BF13F4212500A42B26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		435762C213F4212500A42B26 /* MoccacinoSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MoccacinoSample-Info.plist"; sourceTree = "<group>"; };
+		435762C413F4212500A42B26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		435762C613F4212500A42B26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		435762C813F4212500A42B26 /* MoccacinoSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoccacinoSample-Prefix.pch"; sourceTree = "<group>"; };
+		435762CA13F4212500A42B26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		435762CC13F4212500A42B26 /* MoccacinoSampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoccacinoSampleAppDelegate.h; sourceTree = "<group>"; };
+		435762CD13F4212500A42B26 /* MoccacinoSampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoccacinoSampleAppDelegate.m; sourceTree = "<group>"; };
+		435762D013F4212500A42B26 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		435762DB13F4218B00A42B26 /* MoccacinoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoccacinoWindowController.h; path = MoccacinoSample/MoccacinoWindowController.h; sourceTree = "<group>"; };
+		435762DC13F4218B00A42B26 /* MoccacinoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoccacinoWindowController.m; path = MoccacinoSample/MoccacinoWindowController.m; sourceTree = "<group>"; };
+		435762E113F4226200A42B26 /* MoccacinoWindowController.coffee */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MoccacinoWindowController.coffee; path = MoccacinoSample/MoccacinoWindowController.coffee; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		435762B313F4212500A42B26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				435762BB13F4212500A42B26 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		435762AB13F4212500A42B26 = {
+			isa = PBXGroup;
+			children = (
+				435762E113F4226200A42B26 /* MoccacinoWindowController.coffee */,
+				435762E713F4235500A42B26 /* Generated Code by Moccacino */,
+				435762C013F4212500A42B26 /* MoccacinoSample */,
+				435762B913F4212500A42B26 /* Frameworks */,
+				435762B713F4212500A42B26 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		435762B713F4212500A42B26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				435762B613F4212500A42B26 /* MoccacinoSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		435762B913F4212500A42B26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				435762BA13F4212500A42B26 /* Cocoa.framework */,
+				435762BC13F4212500A42B26 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		435762BC13F4212500A42B26 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				435762BD13F4212500A42B26 /* AppKit.framework */,
+				435762BE13F4212500A42B26 /* CoreData.framework */,
+				435762BF13F4212500A42B26 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		435762C013F4212500A42B26 /* MoccacinoSample */ = {
+			isa = PBXGroup;
+			children = (
+				435762CC13F4212500A42B26 /* MoccacinoSampleAppDelegate.h */,
+				435762CD13F4212500A42B26 /* MoccacinoSampleAppDelegate.m */,
+				435762CF13F4212500A42B26 /* MainMenu.xib */,
+				435762C113F4212500A42B26 /* Supporting Files */,
+			);
+			path = MoccacinoSample;
+			sourceTree = "<group>";
+		};
+		435762C113F4212500A42B26 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				435762C213F4212500A42B26 /* MoccacinoSample-Info.plist */,
+				435762C313F4212500A42B26 /* InfoPlist.strings */,
+				435762C613F4212500A42B26 /* main.m */,
+				435762C813F4212500A42B26 /* MoccacinoSample-Prefix.pch */,
+				435762C913F4212500A42B26 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		435762E713F4235500A42B26 /* Generated Code by Moccacino */ = {
+			isa = PBXGroup;
+			children = (
+				435762DB13F4218B00A42B26 /* MoccacinoWindowController.h */,
+				435762DC13F4218B00A42B26 /* MoccacinoWindowController.m */,
+			);
+			name = "Generated Code by Moccacino";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		435762B513F4212500A42B26 /* MoccacinoSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 435762D413F4212500A42B26 /* Build configuration list for PBXNativeTarget "MoccacinoSample" */;
+			buildPhases = (
+				435762B213F4212500A42B26 /* Sources */,
+				435762B313F4212500A42B26 /* Frameworks */,
+				435762B413F4212500A42B26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoccacinoSample;
+			productName = MoccacinoSample;
+			productReference = 435762B613F4212500A42B26 /* MoccacinoSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		435762AD13F4212500A42B26 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 435762B013F4212500A42B26 /* Build configuration list for PBXProject "MoccacinoSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 435762AB13F4212500A42B26;
+			productRefGroup = 435762B713F4212500A42B26 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				435762B513F4212500A42B26 /* MoccacinoSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		435762B413F4212500A42B26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				435762C513F4212500A42B26 /* InfoPlist.strings in Resources */,
+				435762CB13F4212500A42B26 /* Credits.rtf in Resources */,
+				435762D113F4212500A42B26 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		435762B213F4212500A42B26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				435762C713F4212500A42B26 /* main.m in Sources */,
+				435762CE13F4212500A42B26 /* MoccacinoSampleAppDelegate.m in Sources */,
+				435762DE13F4218B00A42B26 /* MoccacinoWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		435762C313F4212500A42B26 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				435762C413F4212500A42B26 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		435762C913F4212500A42B26 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				435762CA13F4212500A42B26 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		435762CF13F4212500A42B26 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				435762D013F4212500A42B26 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		435762D213F4212500A42B26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		435762D313F4212500A42B26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		435762D513F4212500A42B26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MoccacinoSample/MoccacinoSample-Prefix.pch";
+				INFOPLIST_FILE = "MoccacinoSample/MoccacinoSample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		435762D613F4212500A42B26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MoccacinoSample/MoccacinoSample-Prefix.pch";
+				INFOPLIST_FILE = "MoccacinoSample/MoccacinoSample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		435762B013F4212500A42B26 /* Build configuration list for PBXProject "MoccacinoSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				435762D213F4212500A42B26 /* Debug */,
+				435762D313F4212500A42B26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		435762D413F4212500A42B26 /* Build configuration list for PBXNativeTarget "MoccacinoSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				435762D513F4212500A42B26 /* Debug */,
+				435762D613F4212500A42B26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 435762AD13F4212500A42B26 /* Project object */;
+}

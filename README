@@ -1,51 +1,61 @@
+PLEASE NOTE, THIS IS NOT YET WORKING!!!
+*****************************************************************************
 
-            {
-         }   }   {
-        {   {  }  }
-         }   }{  {
-        {  }{  }  }                    _____       __  __
-       ( }{ }{  { )                   / ____|     / _|/ _|
-     .- { { }  { }} -.               | |     ___ | |_| |_ ___  ___
-    (  ( } { } { } }  )              | |    / _ \|  _|  _/ _ \/ _ \
-    |`-..________ ..-'|              | |___| (_) | | | ||  __/  __/
-    |                 |               \_____\___/|_| |_| \___|\___|
-    |                 ;--.
-    |                (__  \            _____           _       _
-    |                 | )  )          / ____|         (_)     | |
-    |                 |/  /          | (___   ___ _ __ _ _ __ | |_
-    |                 (  /            \___ \ / __| '__| | '_ \| __|
-    |                 |/              ____) | (__| |  | | |_) | |_
-    |                 |              |_____/ \___|_|  |_| .__/ \__|
-     `-.._________..-'                                  | |
-                                                        |_|
+# ABSTRACT 
+
+I got this crazy idea of translating CoffeeScript to Objective-C for
+use in Apple Cocoa projects. This is just a little playground and
+I'm not quite sure if those two worlds can ever work together in a nice
+way, but at least I will give it a try.
 
 
-  CoffeeScript is a little language that compiles into JavaScript.
+# HOW TO IMPLEMENT
 
-  Install Node.js, and then the CoffeeScript compiler:
-  sudo bin/cake install
+My idea is that you set up your projects in Xcode as you are used to. 
+For discrete classes like custom views and controllers you then might 
+want to use a CoffeeScript file which will then automatically become
+translated to a header and an implementation file. (This could use 
+'Pre-actions' like I do in my XObjC project https://github.com/holtwick/xobjc)
 
-  Or, if you have the Node Package Manager installed:
-  npm install -g coffee-script
-  (Leave off the -g if you don't wish to install globally.)
+The great strength of CoffeeScript is that you do not have to care a
+lot about the high level objects like dictionaries and lists. These should
+then be mapped to NSObject based values. Also the better string handling 
+could save a lot of time and headaches. Everything should become an object
+and they should know how to interact with each other.
 
-  Execute a script:
-  coffee /path/to/script.coffee
+For the IBActions and IBOutlets we might need some coding conventions.
+Also for calling and defining Objective C methods. As much as possible it 
+should be a typeless, so arguments in newly defined methods would
+most probably become 'id' objects.
 
-  Compile a script:
-  coffee -c /path/to/script.coffee
 
-  For documentation, usage, and examples, see:
-  http://coffeescript.org/
+   The profit of all this could be 
+   writing native Cocoa apps 
+   with much less code!
 
-  To suggest a feature, report a bug, or general discussion:
-  http://github.com/jashkenas/coffee-script/issues/
 
-  If you'd like to chat, drop by #coffeescript on Freenode IRC,
-  or on webchat.freenode.net.
+# SAMPLE
 
-  The source repository:
-  git://github.com/jashkenas/coffee-script.git
+class MyViewController extends UIViewController
 
-  All contributors are listed here:
-  http://github.com/jashkenas/coffee-script/contributors
+    IBOUTLET = 
+        myView: UIView
+
+    viewDidLoad: -> 
+        @title = 'Test'
+        @view.addSubview @myView
+        @addSubview @myView
+        @myView.setFrame 1,2,3,4
+
+    viewDidAppear_animated: -> (view, animated)
+        NSLog 'Great!'
+
+	IBACTION_doSomething: -> (sender)
+	    @myView.hidden = 1
+
+
+# REFERENCE
+
+All work is based on CoffeeScript http://coffeescript.org/
+
+The original repo forked from on 2011--8-11 is git://github.com/jashkenas/coffee-script.git

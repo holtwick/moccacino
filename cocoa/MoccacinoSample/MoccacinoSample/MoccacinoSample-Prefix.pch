@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'MoccacinoSample' target in the 'MoccacinoSample' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

@@ -235,11 +235,11 @@ exports.Block = class Block extends Base
   # It would be better not to generate them in the first place, but for now,
   # clean up obvious double-parentheses.
   compileRoot: (o) ->
-    o.indent = @tab = if o.bare then '' else TAB
+    o.indent = @tab = ''
     o.scope  = new Scope null, this, null
     o.level  = LEVEL_TOP
     code     = @compileWithDeclarations o
-    if o.bare then code else "(function() {\n#{code}\n}).call(this);\n"
+    "// Moccacino\n\n#import \"HOMoccacino.h\"\n\n#{code}\n"
 
   # Compile the expressions body for the contents of a function, with
   # declarations of all inner variables pushed up to the top.
@@ -298,16 +298,25 @@ exports.Literal = class Literal extends Base
     return no unless @isStatement()
     if not (o and (o.loop or o.block and (@value isnt 'continue'))) then this else no
 
-  compileNode: (o) ->
+  compileNode: (o) ->  
     code = if @isUndefined
       if o.level >= LEVEL_ACCESS then '(void 0)' else 'void 0'
     else if @value.reserved and "#{@value}" not in ['eval', 'arguments']
       "\"#{@value}\""
     else
       @value
-    if @isStatement() then "#{@tab}#{code};" else code
+    if @isStatement() then "#{@tab}#{code};" else 
+      # objc string      
+      # console.log @
+      if @value[0] == '\"' 
+        "@" + code 
+      else 
+        if @asKey 
+          "@\"#{@value}\""
+        else
+          code
 
-  toString: ->
+  toString: ->  
     ' "' + @value + '"'
 
 #### Return
@@ -617,7 +626,9 @@ exports.Index = class Index extends Base
   children: ['index']
 
   compile: (o) ->
-    (if @proto then '.prototype' else '') + "[#{ @index.compile o, LEVEL_PAREN }]"
+      # objc index at
+      " objectAtIndex:#{ @index.compile o, LEVEL_PAREN }"
+    # (if @proto then '.prototype' else '') + "[#{ @index.compile o, LEVEL_PAREN }]"
 
   isComplex: ->
     @index.isComplex()
@@ -764,7 +775,8 @@ exports.Obj = class Obj extends Base
         (prop.variable.base or prop.variable).asKey = yes
       indent + prop.compile(o, LEVEL_TOP) + join
     props = props.join ''
-    obj   = "{#{ props and '\n' + props + '\n' + @tab }}"
+    # console.log @properties
+    obj   = "DICT(#{ props and '\n' + props + '\n' + @tab })"
     if @front then "(#{obj})" else obj
 
   assigns: (name) ->
@@ -789,9 +801,9 @@ exports.Arr = class Arr extends Base
     return code if code = Splat.compileSplattedArray o, objs
     code = (obj.compile o, LEVEL_LIST for obj in objs).join ', '
     if code.indexOf('\n') >= 0
-      "[\n#{o.indent}#{code}\n#{@tab}]"
+      "ARRAY(\n#{o.indent}#{code}\n#{@tab})"
     else
-      "[#{code}]"
+      "ARRAY(#{code})"
 
   assigns: (name) ->
     for obj in @objects when obj.assigns name then return yes
@@ -906,7 +918,10 @@ exports.Class = class Class extends Base
 
     klass = new Parens Closure.wrap(@body), true
     klass = new Assign @variable, klass if @variable
-    klass.compile o
+    
+    # objc
+    return "@@implementation #{name}\n #{ klass.compile o } \n@end\n"
+    
 
 #### Assign
 
@@ -948,7 +963,9 @@ exports.Assign = class Assign extends Base
       @value.klass = match[1] if match[1]
       @value.name  = match[2] ? match[3] ? match[4] ? match[5]
     val = @value.compile o, LEVEL_LIST
-    return "#{name}: #{val}" if @context is 'object'
+    
+    # objc
+    return "#{name}, #{val}" if @context is 'object'
     val = name + " #{ @context or '=' } " + val
     if o.level <= LEVEL_LIST then val else "(#{val})"
 

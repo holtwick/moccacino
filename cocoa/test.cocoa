@@ -1,0 +1,9 @@
+if x < 1
+	NSLog "hallo"
+	a = [1,2,3]
+	o = a[1]
+else
+	d = a:1, b:2, "c":3
+	
+class class1
+	method1: -> 2

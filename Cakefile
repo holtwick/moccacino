@@ -63,22 +63,14 @@ task 'install', 'install CoffeeScript into /usr/local (or --prefix)', (options) 
 task 'build', 'build the CoffeeScript language from source', build = (cb) ->
   files = fs.readdirSync 'src'
   files = ('src/' + file for file in files when file.match(/\.coffee$/))
-  run ['-c', '-o', 'lib/coffee-script'].concat(files), cb
-
-
-task 'build:full', 'rebuild the source twice, and run the tests', ->
-  build ->
-    build ->
-      csPath = fs.realpathSync './lib/coffee-script'
-      unless runTests require csPath
-        process.exit 1
+  run ['-c', '-o', 'lib/moccacino'].concat(files), cb
 
 
 task 'build:parser', 'rebuild the Jison parser (run build first)', ->
   extend global, require('util')
   require 'jison'
   parser = require('./lib/coffee-script/grammar').parser
-  fs.writeFile 'lib/coffee-script/parser.js', parser.generate()
+  fs.writeFile 'lib/moccacino/parser.js', parser.generate()
 
 
 task 'build:ultraviolet', 'build and install the Ultraviolet syntax highlighter', ->
@@ -93,7 +85,7 @@ task 'build:browser', 'rebuild the merged script for inclusion in the browser', 
     code += """
       require['./#{name}'] = new function() {
         var exports = this;
-        #{fs.readFileSync "lib/coffee-script/#{name}.js"}
+        #{fs.readFileSync "lib/moccacino/#{name}.js"}
       };
     """
   code = """
