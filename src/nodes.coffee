@@ -223,7 +223,8 @@ exports.Block = class Block extends Base
       else if top
         node.front = true
         code = node.compile o
-        codes.push if node.isStatement o then code else "#{@tab}#{code};"
+        # console.log @
+        codes.push if node.isStatement o then code else "#{@tab}#{code}; // End"
       else
         codes.push node.compile o, LEVEL_LIST
     return codes.join '\n' if top
@@ -239,7 +240,7 @@ exports.Block = class Block extends Base
     o.scope  = new Scope null, this, null
     o.level  = LEVEL_TOP
     code     = @compileWithDeclarations o
-    "// Moccacino\n\n#import \"HOMoccacino.h\"\n\n#{code}\n"
+    "// Moccacino\n// DO NOT MODIFY! AUTO GENERATED!\n\n\n#import \"HOMoccacino.h\"\n\n#{code}\n"
 
   # Compile the expressions body for the contents of a function, with
   # declarations of all inner variables pushed up to the top.
@@ -260,10 +261,10 @@ exports.Block = class Block extends Base
       assigns = scope.hasAssignments
       if (declars or assigns) and i
         code += '\n'
-      if declars
-        code += "#{@tab}id #{ scope.declaredVariables().join(', ') };\n"
+      if declars 
+        code += "#{@tab}id #{ scope.declaredVariables().join(', ') }; // Declarations\n"
       if assigns
-        code += "#{@tab}id #{ multident scope.assignedVariables().join(', '), @tab };\n"
+        code += "#{@tab}id #{ multident scope.assignedVariables().join(', '), @tab }; // Assingnments\n"
     code + post
 
   # Wrap up the given nodes as a **Block**, unless it already happens
