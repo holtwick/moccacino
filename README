@@ -1,7 +1,6 @@
 PLEASE NOTE, THIS IS NOT YET WORKING!!!
 *****************************************************************************
 
-# ABSTRACT 
 
 I got this crazy idea of translating CoffeeScript to Objective-C for
 use in Apple Cocoa projects. This is just a little playground and
@@ -42,7 +41,7 @@ class MyViewController extends UIViewController
         myView: UIView
 
     viewDidLoad: -> 
-        @title = 'Test'
+        @title = 'Test #{ somevariable }'
         @view.addSubview @myView
         @addSubview @myView
         @myView.setFrame 1,2,3,4
@@ -50,12 +49,14 @@ class MyViewController extends UIViewController
     viewDidAppear_animated: -> (view, animated)
         NSLog 'Great!'
 
-	IBACTION_doSomething: -> (sender)
-	    @myView.hidden = 1
+    IBACTION_doSomething: -> (sender)
+        @myView.hidden = 1
 
 
 # REFERENCE
 
-All work is based on CoffeeScript http://coffeescript.org/
+All work is based on CoffeeScript:
+http://coffeescript.org/
 
-The original repo forked from on 2011--8-11 is git://github.com/jashkenas/coffee-script.git
+The original repo forked from on 2011--8-11: 
+git://github.com/jashkenas/coffee-script.git
