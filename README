@@ -45,10 +45,10 @@ class MyViewController extends UIViewController
         @addSubview @myView
         @myView.setFrame 1,2,3,4
 
-    viewDidAppear_animated: -> (view, animated)
+    viewDidAppear_animated: (view, animated) ->
         NSLog 'Great!'
 
-    IBACTION_doSomething: -> (sender)
+    IBACTION_doSomething: (sender) ->
         @myView.hidden = 1
 
 
