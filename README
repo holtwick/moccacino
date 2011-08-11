@@ -1,8 +1,7 @@
 PLEASE NOTE, THIS IS NOT YET WORKING!!!
 *****************************************************************************
 
-
-I got this crazy idea of translating CoffeeScript to Objective-C for
+I have this crazy idea of translating CoffeeScript to Objective-C for
 use in Apple Cocoa projects. This is just a little playground and
 I'm not quite sure if those two worlds can ever work together in a nice
 way, but at least I will give it a try.

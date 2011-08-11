@@ -261,9 +261,9 @@ exports.Block = class Block extends Base
       if (declars or assigns) and i
         code += '\n'
       if declars
-        code += "#{@tab}var #{ scope.declaredVariables().join(', ') };\n"
+        code += "#{@tab}id #{ scope.declaredVariables().join(', ') };\n"
       if assigns
-        code += "#{@tab}var #{ multident scope.assignedVariables().join(', '), @tab };\n"
+        code += "#{@tab}id #{ multident scope.assignedVariables().join(', '), @tab };\n"
     code + post
 
   # Wrap up the given nodes as a **Block**, unless it already happens
@@ -708,7 +708,7 @@ exports.Range = class Range extends Base
     else
       vars    = "#{i} = #{@fromC}" + if @toC isnt @toVar then ", #{@toC}" else ''
       cond    = "#{@fromVar} <= #{@toVar}"
-      body    = "var #{vars}; #{cond} ? #{i} <#{@equals} #{@toVar} : #{i} >#{@equals} #{@toVar}; #{cond} ? #{i}++ : #{i}--"
+      body    = "id #{vars}; #{cond} ? #{i} <#{@equals} #{@toVar} : #{i} >#{@equals} #{@toVar}; #{cond} ? #{i}++ : #{i}--"
     post   = "{ #{result}.push(#{i}); }\n#{idt}return #{result};\n#{o.indent}"
     hasArgs = (node) -> node?.contains (n) -> n instanceof Literal and n.value is 'arguments' and not n.asKey
     args   = ', arguments' if hasArgs(@from) or hasArgs(@to)
@@ -911,7 +911,7 @@ exports.Class = class Class extends Base
     @setContext name
     @walkBody name, o
     @ensureConstructor name
-    @body.expressions.unshift new Extends lname, @parent if @parent
+    #@body.expressions.unshift new Extends lname, @parent if @parent
     @body.expressions.unshift @ctor unless @ctor instanceof Code
     @body.expressions.push lname
     @addBoundFunctions o
@@ -920,7 +920,8 @@ exports.Class = class Class extends Base
     klass = new Assign @variable, klass if @variable
     
     # objc
-    return "@@implementation #{name}\n #{ klass.compile o } \n@end\n"
+    
+    return "@@implementation #{name}#{ if @parent then " : " + @parent.compile o }\n #{ klass.compile o } \n@end\n"
     
 
 #### Assign
