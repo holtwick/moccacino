@@ -612,9 +612,12 @@ exports.Access = class Access extends Base
   children: ['name']
 
   compile: (o) ->
-    name = @name.compile o
-    @proto + if IDENTIFIER.test name then ".#{name}" else "[#{name}]"
-
+    # name = @name.compile o
+    # @proto + if IDENTIFIER.test name then ".#{name}" else "[#{name}]"
+    # console.log(@)
+    #if IDENTIFIER.test name then "- (id)#{name}" else "[#{name}]"
+    if @proto then "- (id)#{@name.value}" else " #{@name.value}"
+    
   isComplex: NO
 
 #### Index
@@ -892,9 +895,9 @@ exports.Class = class Class extends Base
   ensureConstructor: (name) ->
     if not @ctor
       @ctor = new Code
-      @ctor.body.push new Literal "#{name}.__super__.constructor.apply(this, arguments)" if @parent
-      @ctor.body.push new Literal "#{@externalCtor}.apply(this, arguments)" if @externalCtor
-      @body.expressions.unshift @ctor
+      # @ctor.body.push new Literal "#{name}.__super__.constructor.apply(this, arguments)" if @parent
+      # @ctor.body.push new Literal "#{@externalCtor}.apply(this, arguments)" if @externalCtor
+      # @body.expressions.unshift @ctor
     @ctor.ctor     = @ctor.name = name
     @ctor.klass    = null
     @ctor.noReturn = yes
@@ -911,8 +914,8 @@ exports.Class = class Class extends Base
     @setContext name
     @walkBody name, o
     @ensureConstructor name
-    #@body.expressions.unshift new Extends lname, @parent if @parent
-    @body.expressions.unshift @ctor unless @ctor instanceof Code
+    # @body.expressions.unshift new Extends lname, @parent if @parent
+    # @body.expressions.unshift @ctor unless @ctor instanceof Code
     @body.expressions.push lname
     @addBoundFunctions o
 
