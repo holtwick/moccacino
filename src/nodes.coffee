@@ -37,7 +37,7 @@ exports.Base = class Base
   # already been asked to return the result (because statements know how to
   # return results).
   compile: (o, lvl) ->
-    console.log @
+    # console.log @
     o        = extend {}, o
     o.level  = lvl if lvl
     node     = @unfoldSoak(o) or this
@@ -618,6 +618,7 @@ exports.Access = class Access extends Base
     # @proto + if IDENTIFIER.test name then ".#{name}" else "[#{name}]"
     # console.log(@)
     #if IDENTIFIER.test name then "- (id)#{name}" else "[#{name}]"
+    # xxx block should follow
     if @proto then "- (id)#{@name.value}" else " #{@name.value}"
     
   isComplex: NO
@@ -926,7 +927,7 @@ exports.Class = class Class extends Base
     
     # objc
     
-    return "@@implementation #{name}#{ if @parent then " : " + @parent.compile o }\n #{ klass.compile o } \n@end\n"
+    return "@implementation #{name}#{ if @parent then " : " + @parent.compile o }\n #{ klass.compile o } \n@end\n"
     
 
 #### Assign
@@ -1352,8 +1353,10 @@ exports.Op = class Op extends Base
     return @compileChain     o if @isChainable() and @first.isChainable()
     return @compileExistence o if @operator is '?'
     @first.front = @front
-    code = @first.compile(o, LEVEL_OP) + ' ' + @operator + ' ' +
-           @second.compile(o, LEVEL_OP)
+    # console.log "Operator:", @operator
+    # better some parens to much
+    code = "(" + @first.compile(o, LEVEL_OP) + ' ' + @operator + ' ' +
+           @second.compile(o, LEVEL_OP) + ")"
     if o.level <= LEVEL_OP then code else "(#{code})"
 
   # Mimic Python's chained comparisons when multiple comparison operators are
